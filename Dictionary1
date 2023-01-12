@@ -1,0 +1,55 @@
+Q.In this exercise, you're implementing a way to keep track of the high scores for the most popular game in your local arcade hall .   
+    
+    
+    
+var scoreboard : Dictionary<String,Int> = [:]
+
+func addPlayer(name : String)
+{
+    scoreboard[name] = 0
+}
+
+func removePlayer(name : String)
+{
+    scoreboard.removeValue(forKey: name)
+}
+
+func updatescoreboard(name : String , score : Int)
+{
+    scoreboard.updateValue(score, forKey: name)
+}
+
+func resetscore(name : String)
+{
+    scoreboard[name] = 0
+}
+
+func displayScore()
+{
+    let playerList : [String] = Array(scoreboard.keys).sorted()
+    for player in playerList
+    {
+        print("Name: \(player)  Score: \(scoreboard[player]!)")
+    }
+}
+
+
+addPlayer(name: "J")
+addPlayer(name: "S")
+addPlayer(name: "K")
+addPlayer(name: "M")
+addPlayer(name: "Y")
+updatescoreboard(name: "J", score: 40)
+updatescoreboard(name: "S", score: 60)
+updatescoreboard(name: "K", score: 100)
+resetscore(name: "S")
+removePlayer(name: "M")
+updatescoreboard(name: "Y", score: 70)
+displayScore()
+
+Output:
+
+Name: J  Score: 40
+Name: K  Score: 100
+Name: S  Score: 0
+Name: Y  Score: 70
