@@ -1,0 +1,19 @@
+Q.Given an array nums of integers, return how many of them contain an even number of digits.
+
+
+var arr = [12,345,2,6,7896,33,16756]
+
+for i in arr
+{
+    if String(i).count % 2 == 0
+    {
+        print(i)
+    }
+}
+
+
+Output :
+
+12
+7896
+33
