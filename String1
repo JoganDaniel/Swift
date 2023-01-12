@@ -1,0 +1,37 @@
+Q.On a given sentence do the operations :
+    1.Print the first letter of all the words of the sentence together in uppercase
+    2.Print the last letter of all the words of the sentence together in uppercase
+    3.Print the words which start with a vowel
+    
+    
+
+let str : String = "hello everyone welcome to my swift playground and have a unique experience"
+
+let arr = str.split(separator: " ")
+var firstletters : String = ""
+var lastletters : String = ""
+
+for word in arr{
+    firstletters.append(word[word.startIndex])
+    lastletters.append(word[word.index(before: word.endIndex)])
+}
+print(firstletters.uppercased())
+print(lastletters.uppercased())
+
+for word in arr{
+    let a = word[word.startIndex]
+    switch(a)
+    {
+    case "a","e","i","o","u" :
+        print(word,terminator: " ")
+    default:
+        print("-",terminator: " ")
+    }
+}
+
+
+Output:
+
+HEWTMSPAHAUE
+OEEOYTDDEAEE
+- everyone - - - - - and - a unique experience 
