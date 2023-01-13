@@ -1,0 +1,53 @@
+Q.Given an array with the lengths of various metal rods, repeatedly perform the following
+
+1. Count the number of rods.
+
+2. Find the rod(s) with the shortest length. 3. Discard any rod of that length.
+
+4. Cut that shortest length from each of the longer rods. These are offcuts.
+
+5. Discard all offcuts.
+
+6. Repeat until there are no more rods.
+
+Maintain an array of the numbers of rods at the beginning of each round of actions and return that array.
+
+
+
+
+var arr : [Int] = [1,1,3,4]
+var ans : [Int] = []
+
+func rod (ar: inout [Int]) {
+    ans.append(ar.count)
+    for i in (0..<ar.count).reversed() {
+        if ar[0] == ar[i] {
+            ar.remove(at: i)
+        } else {
+            ar[i] = ar[i] - ar[0]
+        }
+    }
+    if !ar.isEmpty {
+        rod(ar: &ar)
+    }
+}
+
+rod(ar: &arr)
+
+
+let an = ans.map{ s in
+    return "\(s) elements at start"
+}
+
+for i in an{
+    print(i)
+}
+
+
+
+Output:
+
+4 elements at start
+2 elements at start
+1 elements at start
+
