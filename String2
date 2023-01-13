@@ -1,0 +1,25 @@
+Q.Given a string, reverse all the words which have odd length. The even length words are not changed.
+
+
+func reverseOdd (sentence str : String) -> String{
+    var arr = str.split(separator: " ")
+    var ans = ""
+    for sub in arr{
+        if sub.count % 2 != 0{
+            ans += sub.reversed()+" "
+        }
+        else{
+            ans += sub+" "
+        }
+    }
+    return ans
+}
+    print(reverseOdd(sentence: "When you define a function, you can optionally define one or more named, typed values that the function takes as input, known as parameters"))
+
+
+
+
+
+Output:
+
+When uoy define a ,noitcnuf uoy nac optionally define eno or more named, depyt values that eht function sekat as input, nwonk as parameters 
