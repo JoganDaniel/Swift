@@ -1,0 +1,33 @@
+Q. You have 2 sets a and b . Find the
+    1.union
+    2.intersection 
+    3.symmetric difference.
+Also find whether a is a subset ,superset or disjoint with b.
+
+
+let a : Set<Int> = [1,3,5,7,9]
+let b : Set<Int> = [1,2,3,4,5]
+
+print("Union is \(a.union(b))")
+
+print("Intersection is \(b.intersection(a))")
+
+print("Symmetric difference is \(a.symmetricDifference(b).sorted())")
+
+if a.isSubset(of: b){
+    print("a is a subset of b")
+}
+else if b.isSubset(of: a){
+    print("b is a subset of a")
+}
+else{
+    print("they are disjoint")
+}
+
+
+Output :
+
+Union is [1, 3, 5, 7, 4, 2, 9]
+Intersection is [3, 5, 1]
+Symmetric difference is [2, 4, 7, 9]
+they are disjoint
