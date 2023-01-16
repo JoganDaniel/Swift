@@ -1,0 +1,60 @@
+Q. Write a Python program that partitions this dictionary into two sub-dictionaries:
+1.admittedStudents whose keys are the admitted students and the key values are the averages obtained (average greater than or equal to 10).
+2.nonAdmittedStudents whose keys are non-admitted students and the key values are the averages obtained (average less than 10).
+
+
+
+var students  = ["student_1" : 13 , "student_2" : 17 , "student_3" : 9 , "student_4" : 15 ,
+             "student_5" : 8 , "student_6" : 14 , "student_7" : 16 , "student_8" : 12 ,
+             "student_9" : 13 , "student_10" : 15 , "student_11" : 14 , "student_112" : 9 ,
+             "student_13" : 10 , "student_14" : 12 , "student_15" : 13 , "student_16" : 7 ,
+             "student_17" : 12 , "student_18" : 15 , "student_19" : 9 , "student_20" : 17 ,]
+
+
+var admittedStudents : [String:Int] = [:]
+var nonadmittedStudents : [String:Int] = [:]
+for name in students.keys
+{
+    let mark : Int = students[name]!
+    if mark >= 10{
+        admittedStudents[name] = mark
+    }
+    else{
+        nonadmittedStudents[name] = mark
+    }
+}
+
+for (name,mark) in admittedStudents{
+    print("\(name) has scored \(mark) marks and will be admitted")
+}
+
+print("")
+for (name,mark) in nonadmittedStudents{
+    print("\(name) has scored \(mark) marks and will not be admitted")
+}
+
+
+Output:
+
+student_7 has scored 16 marks and will be admitted
+student_11 has scored 14 marks and will be admitted
+student_9 has scored 13 marks and will be admitted
+student_10 has scored 15 marks and will be admitted
+student_18 has scored 15 marks and will be admitted
+student_6 has scored 14 marks and will be admitted
+student_13 has scored 10 marks and will be admitted
+student_14 has scored 12 marks and will be admitted
+student_20 has scored 17 marks and will be admitted
+student_1 has scored 13 marks and will be admitted
+student_2 has scored 17 marks and will be admitted
+student_17 has scored 12 marks and will be admitted
+student_8 has scored 12 marks and will be admitted
+student_4 has scored 15 marks and will be admitted
+student_15 has scored 13 marks and will be admitted
+
+student_16 has scored 7 marks and will not be admitted
+student_19 has scored 9 marks and will not be admitted
+student_3 has scored 9 marks and will not be admitted
+student_5 has scored 8 marks and will not be admitted
+student_112 has scored 9 marks and will not be admitted
+
