@@ -1,0 +1,98 @@
+Q.
+Based on an input file containing which team played against which and what the outcome was, create a file with a table like this:
+
+Team                           | MP |  W |  D |  L |  P
+Devastating Donkeys            |  3 |  2 |  1 |  0 |  7
+Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6
+Blithering Badgers             |  3 |  1 |  0 |  2 |  3
+Courageous Californians        |  3 |  0 |  1 |  2 |  1
+
+
+
+
+enum team : String{
+    case Devastating_Donkeys = "Devastating Donkeys    ", Allegoric_Alaskans = "Allegoric Alaskans    " , Blithering_Badgers = "Blithering Badgers    " , Courageous_Californians = "Courageous Californians"
+    
+}
+
+enum result{
+    case win
+    case loss
+    case draw
+}
+
+var table : [String : [Int]] = ["Devastating Donkeys    " : [0,0,0,0,0] , "Allegoric Alaskans    " : [0,0,0,0,0] , "Blithering Badgers    " : [0,0,0,0,0] , "Courageous Californians" : [0,0,0,0,0]]
+func match (team : team , against : team , result : result)
+{
+    switch result
+    {
+    case .win :
+        var arr : [Int] = table[team.rawValue]!
+        arr[0]+=1
+        arr[1]+=1
+        arr[4]+=3
+        
+        var larr : [Int] = table[against.rawValue]!
+        larr[0]+=1
+        larr[3]+=1
+        
+        table[team.rawValue] = arr
+        table[against.rawValue] = larr
+    case .loss :
+        var arr : [Int] = table[team.rawValue]!
+        arr[0]+=1
+        arr[3]+=1
+        
+        var warr : [Int] = table[against.rawValue]!
+        warr[0]+=1
+        warr[1]+=1
+        warr[4]+=3
+        
+        table[team.rawValue] = arr
+        table[against.rawValue] = warr
+        
+    case .draw :
+        var arr : [Int] = table[team.rawValue]!
+        arr[0]+=1
+        arr[2]+=1
+        arr[4]+=1
+        
+        var arr2 : [Int] = table[against.rawValue]!
+        arr2[0]+=1
+        arr2[2]+=1
+        arr2[4]+=1
+        
+        table[team.rawValue] = arr
+        table[against.rawValue] = arr2
+        
+    }
+}
+
+
+match(team: .Allegoric_Alaskans, against: .Blithering_Badgers, result: .win)
+match(team: .Devastating_Donkeys, against: .Courageous_Californians, result: .loss)
+match(team: .Devastating_Donkeys, against: .Allegoric_Alaskans, result: .draw)
+match(team: .Blithering_Badgers, against: .Courageous_Californians, result: .win)
+match(team: .Devastating_Donkeys, against: .Allegoric_Alaskans, result: .win)
+
+display(outcome : table)
+func display (outcome : [String:[Int]])
+{
+    for (team,score) in outcome
+    {
+        print(team,terminator: "\t\t\t| ")
+        for i in score{
+            print(i,terminator: " | ")
+        }
+        print("")
+    }
+}
+
+
+Output:
+
+Devastating Donkeys    			| 3 | 1 | 1 | 1 | 4 | 
+Blithering Badgers    			| 2 | 1 | 0 | 1 | 3 | 
+Allegoric Alaskans    			| 3 | 1 | 1 | 1 | 4 | 
+Courageous Californians			| 2 | 1 | 0 | 1 | 3 | 
+
